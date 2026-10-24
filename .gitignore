@@ -1,0 +1,13 @@
+# OULAD data files
+/assessments.csv
+/courses.csv
+/studentAssessment.csv
+/studentInfo.csv
+/studentRegistration.csv
+/studentVle.csv
+/vle.csv
+
+# Generated sort outputs and temporary chunks
+/studentVle_sorted*.csv
+/sort_chunk_*
+__pycache__/

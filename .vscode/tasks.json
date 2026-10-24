@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "ram",
+      "type": "pickString",
+      "description": "Choose the Docker memory limit",
+      "options": ["1g", "2g", "4g", "8g"]
+    },
+    {
+      "id": "trial",
+      "type": "promptString",
+      "description": "Give this run a unique name, for example trial1"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Run OULAD Python sort in Docker",
+      "type": "process",
+      "command": "docker",
+      "args": [
+        "run",
+        "--name",
+        "oulad-sort-${input:ram}-${input:trial}",
+        "--memory=${input:ram}",
+        "-v",
+        "${workspaceFolder}:/source:ro",
+        "-v",
+        "oulad-data:/data",
+        "python:3.12-slim",
+        "python",
+        "/source/sort_oulad_memory.py"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
